@@ -1,4 +1,4 @@
-***Github repo för klass AU24***
+***Github repo för klass MA24***
 I denna repo kommer vi lägga kodexempel från liveexempel, pdf från föreläsningar etc.
 
 **Main**
