@@ -10,6 +10,7 @@ public class IOManager {
         this.fileName = fileName;
     }
 
+
     public void writeToFile(){
 
 
@@ -19,6 +20,7 @@ public class IOManager {
             printWriter.println("Bill");
             printWriter.println("Bosse");
             printWriter.println("Arne");
+            printWriter.println("Cesar");
 
             printWriter.close();
 
@@ -28,7 +30,12 @@ public class IOManager {
 
     }
 
-    public ArrayList<String> readFromFile(){
+    /**
+     *  läser in från en fil
+     * @param fileN namnet på filen vi läser ifrån
+     * @return en lista av stränger som vi har fått från filen
+     */
+    public ArrayList<String> readFromFile(String fileN){
         ArrayList<String> text = new ArrayList<>();
 
         try {
@@ -39,7 +46,7 @@ public class IOManager {
                 text.add(line);
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         return text;
