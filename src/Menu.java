@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Scanner scanner = new Scanner(System.in);
+
 
     public void displayMenu(){
 
@@ -18,7 +18,7 @@ public class Menu {
         do {
             displayMenu();
 
-            choice = getNewInt();
+            choice = InputHandler.getNewInt();
 
             switch (choice){
                 case 1:
@@ -26,7 +26,19 @@ public class Menu {
                     break;
 
                 case 2:
-                    System.out.println("choice = " + choice);
+                    System.out.println("ange namn på spelare 1");
+                    String name1 = InputHandler.getNewString();
+                    Player p1 = new Player(name1,'X');
+
+                    System.out.println("ange namn på spelare 2");
+                    String name2 = InputHandler.getNewString();
+                    Player p2 = new Player(name2,'O');
+
+                    System.out.println("hur stor spelplan?");
+
+                    Game game = new Game(p1,p2,InputHandler.getNewInt());
+                    game.play();
+
                     break;
                 case 0:
                     System.out.println("choice = " + choice);
@@ -38,16 +50,7 @@ public class Menu {
 
     }
 
-    public int getNewInt(){
 
-
-        while(!scanner.hasNextInt()){
-            System.out.println("felaktig inmantning, ange ett heltal");
-            scanner.nextLine();
-        }
-
-        return scanner.nextInt();
-    }
 
 
 

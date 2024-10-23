@@ -26,7 +26,7 @@ public class Main {
 //Player
 // -name
 
-//InputOutput
+//InputHandler
 //-errorHandling
 
 //Board
@@ -53,7 +53,8 @@ public class Main {
 // skriva ut rutnät
 // skapa en meny
 //TODO starta ett nytt spel -1p *
-//TODO starta ett spel- 2p
+//starta ett spel- 2p
+//TODO hålla reda på vems tur det är
 //TODO spelare kan lägga ut markörer
 //TODO kontrollera om man KAN lägga ut markör
 //TODO kontrollera om spelare har vunnit

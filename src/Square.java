@@ -20,4 +20,20 @@ public class Square {
 
         System.out.print( mark + "|" );
     }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    public Player getOwner() {
+        return owner;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
 }
