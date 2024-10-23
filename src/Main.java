@@ -1,6 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+
+       Board board = new Board(10);
+       board.printBoard();
     }
 }
 
@@ -12,23 +15,49 @@ public class Main {
 
 //Game
 //    -winner
+// -wins
 //  -draw
 //  -turns
 // -loop
+// -currentPlayer
 
 //Player
+// -name
 
 //InputOutput
+//-errorHandling
 
-//Grid
+//Board
+//  -grid (squares)
+// -size
+//  -skriv ut grid
 
 //square
+// -player
+// -print
 
 //row
 //column
 //diagonal
 
-//TODO skapa ett rutnät
+//Menu
+// -starta ett spel med två spelare
+// * starta ett spel mot datorn
+//  -avsluta
+
+//AI
+
+// skapa ett rutnät
+// skriva ut rutnät
+//TODO skapa en meny
+//TODO starta ett nytt spel -1p
+//TODO starta ett spel- 2p
+//TODO spelare kan lägga ut markörer
+//TODO kontrollera om man KAN lägga ut markör
+//TODO kontrollera om spelare har vunnit
+
+//TODO kontrollera om det blivit oavgjort
+//TODO fråga om man vill spela igen
 
 
 
