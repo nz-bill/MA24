@@ -9,6 +9,8 @@ public class Game {
 
     private Board board;
 
+    private boolean running = true;
+
     public Game(Player player1, Player player2, int size) {
         this.player1 = player1;
         this.player2 = player2;
@@ -22,10 +24,13 @@ public class Game {
         System.out.println("Player1: " + player1.getName());
         System.out.println("Player2: " + player2.getName());
 
-        while(true){
+        while(running){
             board.printBoard();
 
+            board.updateSquare(1,1, currentPlayer);
 
+            board.printBoard();
+            running = false;
         }
 
 

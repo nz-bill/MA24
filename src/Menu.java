@@ -40,6 +40,10 @@ public class Menu {
                     game.play();
 
                     break;
+                case 3: Player pl1 = new Player("Bill",'X');
+                        Player pl2 = new Player("boll", 'O');
+                        Game game2 = new Game(pl1,pl2,3);
+                        game2.play();
                 case 0:
                     System.out.println("choice = " + choice);
                     break;
