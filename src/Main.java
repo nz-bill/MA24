@@ -1,9 +1,11 @@
 public class Main {
     public static void main(String[] args) {
 
+        Menu menu = new Menu();
+        menu.start();
 
-       Board board = new Board(10);
-       board.printBoard();
+//       Board board = new Board(10);
+//       board.printBoard();
     }
 }
 
@@ -49,8 +51,8 @@ public class Main {
 
 // skapa ett rutnät
 // skriva ut rutnät
-//TODO skapa en meny
-//TODO starta ett nytt spel -1p
+// skapa en meny
+//TODO starta ett nytt spel -1p *
 //TODO starta ett spel- 2p
 //TODO spelare kan lägga ut markörer
 //TODO kontrollera om man KAN lägga ut markör
