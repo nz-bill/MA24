@@ -18,7 +18,7 @@ public class Menu {
         do {
             displayMenu();
 
-            choice = InputHandler.getNewInt();
+            choice = InputHandler.getNewIntInRange(0,3);
 
             switch (choice){
                 case 1:
@@ -40,6 +40,8 @@ public class Menu {
                     game.play();
 
                     break;
+
+                    //hemlig dev option- ta bort innan release
                 case 3: Player pl1 = new Player("Bill",'X');
                         Player pl2 = new Player("boll", 'O');
                         Game game2 = new Game(pl1,pl2,3);

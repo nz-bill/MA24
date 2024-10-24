@@ -16,10 +16,12 @@ public class Board {
     }
 
     public void printBoard(){
+        int index = 0;
         for (int y = 0; y < this.size; y++){
             System.out.print("|");
             for(int x = 0; x < this.size; x++){
-                grid.get(x).printSquare();
+                grid.get(index).printSquare();
+                index++;
             }
             System.out.println(y +1);
 
@@ -33,13 +35,41 @@ public class Board {
         System.out.println();
     }
 
-    public boolean updateSquare(int row, int col, Player owner){
+    //i och size
+    //vi vill ha row och col
+//
+//        int y = i/size;
+//        int x = i%size;
+//
+//        System.out.println("x = " + (x+1));
+//        System.out.println("y = " + (y+1));
+    public boolean updateSquare(int row, int col, Player newOwner){
 
-        //gör om row och col till index: ex 1,1 = 0. 2,2 = 4. 3,3 = 8 etc
+//        if(row < 1 || row > size ){
+//            System.out.println("felaktig rad, ange tal mellan 1-" + size);
+//            return  false;
+//        }
+//        if(col < 1 || col > size ){
+//            System.out.println("felaktig kolumn, ange tal mellan 1-" + size);
+//            return  false;
+//        }
+
+        //gör om row och col till index: ex (om size = 3) 1,1 = 0. 2,2 = 4. 3,3 = 8 etc
         int i = ((row-1) * size) + col-1;
-        System.out.println("index = " + i);
+
+        if(grid.get(i).getOwner() != null){
+            System.out.println("rutan är upptagen, välj en ny");
+           return false;
+        }
+
+        grid.get(i).setOwner(newOwner);
+
 
 
         return true;
+    }
+
+    public int getSize() {
+        return size;
     }
 }

@@ -54,9 +54,9 @@ public class Main {
 // skapa en meny
 //TODO starta ett nytt spel -1p *
 //starta ett spel- 2p
-//TODO hålla reda på vems tur det är
-//TODO spelare kan lägga ut markörer
-//TODO kontrollera om man KAN lägga ut markör
+// hålla reda på vems tur det är
+// spelare kan lägga ut markörer
+// kontrollera om man KAN lägga ut markör
 //TODO kontrollera om spelare har vunnit
 
 //TODO kontrollera om det blivit oavgjort

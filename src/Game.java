@@ -27,12 +27,30 @@ public class Game {
         while(running){
             board.printBoard();
 
-            board.updateSquare(1,1, currentPlayer);
+            declareMove();
 
-            board.printBoard();
-            running = false;
+//           if(currentPlayer.equals(player1)){
+//               currentPlayer = player2;
+//           } else{
+//               currentPlayer = player1;
+//           }
+            currentPlayer = currentPlayer.equals(player1) ? player2 : player1;
         }
 
+
+    }
+
+    public void declareMove(){
+
+        boolean ok = false;
+        do {
+            System.out.println(currentPlayer.getName() + "(" + currentPlayer.getMarker()+"), din tur. ange en rad (1-" + board.getSize()+(")"));
+            int row = InputHandler.getNewIntInRange(1,board.getSize());
+            System.out.println("ange en kolumn (1-" + board.getSize()+")");
+            int col = InputHandler.getNewIntInRange(1,board.getSize());
+
+            ok = board.updateSquare(row,col, currentPlayer);
+        } while(!ok);
 
     }
 }
