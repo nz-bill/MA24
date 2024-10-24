@@ -57,10 +57,11 @@ public class Main {
 // hålla reda på vems tur det är
 // spelare kan lägga ut markörer
 // kontrollera om man KAN lägga ut markör
-//TODO kontrollera om spelare har vunnit
+// kontrollera om spelare har vunnit
 
-//TODO kontrollera om det blivit oavgjort
-//TODO fråga om man vill spela igen
+// kontrollera om det blivit oavgjort
+//3 fråga om man vill spela igen3
+
 
 
 

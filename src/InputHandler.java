@@ -33,6 +33,25 @@ public class InputHandler {
 
     }
 
+    public static boolean getYesOrNo(){
+        while(true){
+            String input = scanner.nextLine();
+
+            if(input.toLowerCase().startsWith("j") || input.toLowerCase().startsWith("y")){
+                return true;
+            }
+            if(input.toLowerCase().startsWith("n")){
+                return false;
+            }
+            System.out.println("felaktig inmatning. Svara med ja eller nej");
+
+        }
+
+
+
+
+    }
+
     public static String getNewString(){
         return scanner.nextLine();
     }

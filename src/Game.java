@@ -28,6 +28,13 @@ public class Game {
             board.printBoard();
 
             declareMove();
+            if(board.checkWinner(currentPlayer)){
+                running = winRoutine();
+            }
+            if (board.checkForDraw()){
+                running = drawRoutine();
+            }
+
 
 //           if(currentPlayer.equals(player1)){
 //               currentPlayer = player2;
@@ -38,6 +45,36 @@ public class Game {
         }
 
 
+    }
+
+    public boolean drawRoutine(){
+        System.out.println("det blev oavgjort");
+
+
+        draws++;
+        printScore();
+        board.printBoard();
+
+        System.out.println("vill du fotrsätta spela? (ja/nej");
+        board.resetBoard();
+        return InputHandler.getYesOrNo();
+    }
+
+    public boolean winRoutine(){
+        System.out.println("GRATTIS! "+ currentPlayer.getName() +" vann");
+        currentPlayer.increaseWins();
+        printScore();
+        board.printBoard();
+        System.out.println("vill du fotrsätta spela? (ja/nej");
+        board.resetBoard();
+
+        return InputHandler.getYesOrNo();
+    }
+
+    public void printScore(){
+        System.out.println(player1.getName() + ": " + player1.getWins());
+        System.out.println(player2.getName() + ": " + player2.getWins());
+        System.out.println("draws: " + draws);
     }
 
     public void declareMove(){

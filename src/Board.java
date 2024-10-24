@@ -1,10 +1,14 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Board {
 
     private ArrayList<Square> grid = new ArrayList<>();
+
+    private int filledSquares;
     private int size;
     public Board(int size) {
+        this.filledSquares = 0;
         this.size = size;
       for (int y = 0; y < size; y++){
 
@@ -13,6 +17,15 @@ public class Board {
           }
 
       }
+    }
+
+    public void resetBoard(){
+
+        
+        filledSquares = 0;
+        for (Square s: grid){
+            s.setOwner(null);
+        }
     }
 
     public void printBoard(){
@@ -63,10 +76,85 @@ public class Board {
         }
 
         grid.get(i).setOwner(newOwner);
-
+        filledSquares++;
 
 
         return true;
+    }
+
+    public boolean checkForDraw(){
+        return filledSquares == grid.size();
+    }
+
+    public boolean checkWinner(Player currentPlayer){
+        Player[] winnerArray = new Player[size];
+        for (int i = 0; i < size; i++){
+            winnerArray[i] = currentPlayer;
+        }
+
+        if(checkRows(winnerArray)){
+            return true;
+        }
+        if(checkColumns(winnerArray)){
+            return  true;
+        }
+        return checkDiagonal(winnerArray);
+
+
+
+    }
+
+    private boolean checkColumns(Player[] winnerArray){
+        Player[] col = new Player[size];
+
+        for (int x = 0; x < size; x++){
+            for(int y = 0; y < size; y++){
+                col[y] = grid.get((y * size)+x).getOwner();
+            }
+
+            if(Arrays.equals(col, winnerArray)){
+                return  true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean checkDiagonal(Player[] winnerArray){
+        Player[] dia = new Player[size];
+
+        for (int d = 0; d < size; d++){
+            dia[d] = grid.get((d * size)+d).getOwner();
+        }
+        if(Arrays.equals(dia, winnerArray)){
+            return true;
+        }
+
+        for (int d = size-1; d >= 0; d--){
+            dia[d] = grid.get((d * size) + size-1 -d).getOwner();
+        }
+        if(Arrays.equals(dia, winnerArray)){
+            return true;
+        }
+
+        return  false;
+    }
+
+    private boolean checkRows(Player[] winnerArray){
+
+        Player[] row = new Player[size];
+
+        for (int y = 0; y < size; y++){
+            for(int x = 0; x < size; x++){
+                row[x] = grid.get((y * size)+x).getOwner();
+            }
+            System.out.println(Arrays.toString(row));
+            if(Arrays.equals(row, winnerArray)){
+                return  true;
+            }
+        }
+
+        return false;
     }
 
     public int getSize() {
