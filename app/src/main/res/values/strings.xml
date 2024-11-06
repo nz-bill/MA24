@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidEmployeeExempel</string>
+    <string name="hell_text">Hello Android User</string>
+    <string name="add_button_text">add</string>
+</resources>
