@@ -5,4 +5,5 @@
     <color name="greenish">#236108</color>
     <color name="bluish">#083EE3</color>
     <color name="redish">#BD0F0F</color>
+    <color name="transparent">#00E4E4E4</color>
 </resources>
