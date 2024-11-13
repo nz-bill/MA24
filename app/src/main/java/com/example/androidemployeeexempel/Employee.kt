@@ -2,7 +2,7 @@ package com.example.androidemployeeexempel
 
 import java.io.Serializable
 
-data class Employee(val name: String, val salary: Double): Serializable {
+data class Employee(var name: String, var salary: Double): Serializable {
 
     val id: Int = generateId()
 
@@ -17,6 +17,8 @@ data class Employee(val name: String, val salary: Double): Serializable {
         }
 
     }
+
+
 
     override fun toString(): String {
         return "$name', salary=$salary"

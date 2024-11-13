@@ -8,30 +8,30 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#3A8817"
-        app:cardCornerRadius="20dp"
+        android:backgroundTint="@color/item_background_green"
+        app:cardCornerRadius="@dimen/margin_small"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:padding="@dimen/margin_small">
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="namn"
+                android:text="@string/text_name"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/font_size_medium"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tv_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="id"
+                android:text="@string/text_id"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/font_size_medium"
                 android:textAlignment="textEnd"
                 android:layout_weight="1"/>
         </LinearLayout>

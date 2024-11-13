@@ -14,8 +14,8 @@
         android:id="@+id/tv_id"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="id: 0"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
+        android:textSize="@dimen/font_size_medium"
+        android:layout_marginTop="@dimen/margin_small"
         android:textAlignment="center"/>
 
     <androidx.cardview.widget.CardView
@@ -28,7 +28,7 @@
         app:cardCornerRadius="@dimen/margin_small">
 
         <EditText
-            android:padding="10dp"
+            android:padding="@dimen/padding_small"
             android:background="@color/edit_text_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         app:cardCornerRadius="@dimen/margin_small">
 
         <EditText
-            android:padding="10dp"
+            android:padding="@dimen/padding_small"
             android:background="@color/edit_text_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        android:text="back"
+        android:text="@string/btn_save_txt"
         app:layout_constraintTop_toBottomOf="@id/layout_container_salary"
          />
 
@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_small"
-        android:text="back"
+        android:text="@string/btn_back_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

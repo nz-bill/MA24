@@ -22,7 +22,7 @@
             android:id="@+id/et_name"
            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="namn"
+            android:hint="@string/hint_name"
             />
     </androidx.cardview.widget.CardView>
 
@@ -42,7 +42,7 @@
         android:id="@+id/et_salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="salary"
+        android:hint="@string/hint_salary"
 
         android:inputType="number"/>
     </androidx.cardview.widget.CardView>
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:divider="@color/transparent"
-        android:dividerHeight="20dp"
+        android:dividerHeight="@dimen/margin_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_add"
@@ -77,7 +77,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/margin_medium"
         android:background="@color/greenish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

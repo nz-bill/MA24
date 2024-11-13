@@ -2,4 +2,10 @@
     <string name="app_name">AndroidEmployeeExempel</string>
     <string name="hell_text">Hello Android User</string>
     <string name="add_button_text">add</string>
+    <string name="btn_back_text">back</string>
+    <string name="btn_save_txt">save</string>
+    <string name="hint_name">name</string>
+    <string name="hint_salary">salary</string>
+    <string name="text_name">name</string>
+    <string name="text_id">id</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.androidemployeeexempel
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -9,6 +10,9 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,6 +24,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var lvEmloyees: ListView
     lateinit var adapter: EmployeeAdapter
     var employeeList = mutableListOf<Employee>()
+
+    val launcher: ActivityResultLauncher<Intent> = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+        Log.i("SOUT", "activityresult callback triggered ${result.resultCode}")
+
+       if (result.resultCode == RESULT_OK){
+         updateEmployee(result)
+
+       }
+
+
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +70,9 @@ class MainActivity : AppCompatActivity() {
             newIntent.putExtra("text", "hej på dig din gamle räv")
             newIntent.putExtra("employee", employeeList[position])
 
-            startActivity(newIntent)
+
+            launcher.launch(newIntent)
+            //startActivity(newIntent)
         }
 
         lvEmloyees.setOnItemLongClickListener { parent, view, position, _ ->
@@ -94,6 +112,23 @@ class MainActivity : AppCompatActivity() {
         } else{
             Toast.makeText(this, "no fields should be empty", Toast.LENGTH_SHORT).show()
         }
+
+    }
+
+    fun updateEmployee(result: ActivityResult){
+        val employee: Employee = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+          result.data?.extras?.getSerializable("employee", Employee::class.java)!!
+
+        }else{
+           result.data?.extras?.getSerializable("employee") as Employee
+
+        }
+
+        val i = employeeList.indexOfFirst { it.id == employee.id  }
+        employeeList[i] = employee
+        adapter.notifyDataSetChanged()
+
+
 
     }
 }

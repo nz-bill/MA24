@@ -3,6 +3,7 @@ package com.example.androidemployeeexempel
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,8 @@ import com.example.androidemployeeexempel.databinding.ActivityEmployeeDetailsBin
 class EmployeeDetailsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityEmployeeDetailsBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,8 +32,21 @@ class EmployeeDetailsActivity : AppCompatActivity() {
       
 
 
-        setTextViews()
+        val employee = setTextViews()
 
+        binding.btnSave.setOnClickListener {
+
+            Log.i("SOUT", employee.toString())
+            employee?.salary = binding.etSalary.text.toString().toDouble()
+            employee?.name = binding.etName.text.toString()
+
+            val resultIntent = Intent()
+            resultIntent.putExtra("employee",employee)
+
+            setResult(RESULT_OK, resultIntent)
+
+
+        }
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -39,7 +55,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
 
     }
 
-    fun setTextViews(){
+    fun setTextViews(): Employee?{
         val employee: Employee?
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
             employee = intent.extras?.getSerializable("employee", Employee::class.java)
@@ -47,9 +63,13 @@ class EmployeeDetailsActivity : AppCompatActivity() {
             employee = intent.extras?.getSerializable("employee") as Employee
         }
 
-        binding.tvName.text = employee?.name
+        binding.etName.setText(employee?.name)
+        binding.etSalary.setText(employee?.salary.toString())
+
         binding.tvId.text = employee?.id.toString()
-        binding.tvSalary.text = employee?.salary.toString()
+        return employee
+        // binding.tvName.text = employee?.name
+//        binding.tvSalary.text = employee?.salary.toString()
 
     }
 
