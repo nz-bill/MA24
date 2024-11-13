@@ -1,6 +1,7 @@
 package com.example.androidemployeeexempel
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,16 +27,16 @@ class MainActivity : AppCompatActivity() {
     lateinit var adapter: EmployeeAdapter
     var employeeList = mutableListOf<Employee>()
 
-    val launcher: ActivityResultLauncher<Intent> = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
-        Log.i("SOUT", "activityresult callback triggered ${result.resultCode}")
-
-       if (result.resultCode == RESULT_OK){
-         updateEmployee(result)
-
-       }
-
-
-    }
+//    val launcher: ActivityResultLauncher<Intent> = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+//        Log.i("SOUT", "activityresult callback triggered ${result.resultCode}")
+//
+//       if (result.resultCode == RESULT_OK){
+//         updateEmployee(result)
+//
+//       }
+//
+//
+//    }
 
 
 
@@ -71,8 +73,8 @@ class MainActivity : AppCompatActivity() {
             newIntent.putExtra("employee", employeeList[position])
 
 
-            launcher.launch(newIntent)
-            //startActivity(newIntent)
+           // launcher.launch(newIntent)
+            startActivity(newIntent)
         }
 
         lvEmloyees.setOnItemLongClickListener { parent, view, position, _ ->
@@ -88,13 +90,39 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        Log.i("SOUT", "nu startar jag")
+//        Log.i("SOUT", "nu startar jag")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.i("SOUT", "nu återupptas jag")
+//        Log.i("SOUT", "nu återupptas jag")
 
+            val employee = getEmployeeFromPrefs()
+            if(employee != null){
+                val i = employeeList.indexOfFirst { it.id == employee.id  }
+                if(i >= 0){
+                    employeeList[i] = employee
+                    adapter.notifyDataSetChanged()
+                }
+
+
+            }
+
+    }
+
+    fun getEmployeeFromPrefs(): Employee?{
+
+        val sharedPreferences = getSharedPreferences("com.example.androidemployeeexempel", MODE_PRIVATE)
+        val gson = Gson()
+
+        val jsonString = sharedPreferences.getString("currentEmployee", null)
+        if(jsonString != null){
+            val e = gson.fromJson(jsonString,Employee::class.java)
+            return e
+        } else {
+            Log.i("SOUT", "no employee found in prefs")
+            return null
+        }
     }
 
     fun createEmployee(){

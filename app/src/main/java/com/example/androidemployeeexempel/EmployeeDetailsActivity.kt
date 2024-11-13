@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.androidemployeeexempel.databinding.ActivityEmployeeDetailsBinding
+import com.google.gson.Gson
 
 class EmployeeDetailsActivity : AppCompatActivity() {
 
@@ -40,10 +41,12 @@ class EmployeeDetailsActivity : AppCompatActivity() {
             employee?.salary = binding.etSalary.text.toString().toDouble()
             employee?.name = binding.etName.text.toString()
 
-            val resultIntent = Intent()
-            resultIntent.putExtra("employee",employee)
 
-            setResult(RESULT_OK, resultIntent)
+            saveToPrefs(employee)
+//            val resultIntent = Intent()
+//            resultIntent.putExtra("employee",employee)
+//
+//            setResult(RESULT_OK, resultIntent)
 
 
         }
@@ -51,6 +54,24 @@ class EmployeeDetailsActivity : AppCompatActivity() {
             finish()
         }
 
+
+
+    }
+
+    fun saveToPrefs(employee: Employee?){
+
+        val gson = Gson()
+        val jsonString = gson.toJson(employee)
+
+        val sharedPrefs = getSharedPreferences("com.example.androidemployeeexempel", MODE_PRIVATE )
+        val editor = sharedPrefs.edit()
+
+        editor.putString("currentEmployee", jsonString)
+        editor.apply()
+
+
+
+        Log.i("SOUT",jsonString)
 
 
     }
