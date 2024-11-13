@@ -29,7 +29,7 @@
                 android:id="@+id/tv_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="salary"
+                android:text="id"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textAlignment="textEnd"
