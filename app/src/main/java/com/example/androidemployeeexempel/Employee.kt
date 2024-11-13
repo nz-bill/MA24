@@ -1,6 +1,8 @@
 package com.example.androidemployeeexempel
 
-data class Employee(val name: String, val salary: Double) {
+import java.io.Serializable
+
+data class Employee(val name: String, val salary: Double): Serializable {
 
     val id: Int = generateId()
 

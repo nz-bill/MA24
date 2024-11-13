@@ -1,5 +1,6 @@
 package com.example.androidemployeeexempel
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        Log.i("SOUT", "nu skapas jag")
         etName = findViewById(R.id.et_name)
         etSalary = findViewById(R.id.et_salary)
         lvEmloyees = findViewById(R.id.lv_employees)
@@ -46,6 +48,15 @@ class MainActivity : AppCompatActivity() {
 
         lvEmloyees.adapter = this.adapter;
 
+        lvEmloyees.setOnItemClickListener { parent, view, position, id ->
+            val newIntent = Intent(this, EmployeeDetailsActivity::class.java)
+
+            newIntent.putExtra("text", "hej på dig din gamle räv")
+            newIntent.putExtra("employee", employeeList[position])
+
+            startActivity(newIntent)
+        }
+
         lvEmloyees.setOnItemLongClickListener { parent, view, position, _ ->
             employeeList.removeAt(position)
 
@@ -53,6 +64,18 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        Log.i("SOUT", "nu startar jag")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("SOUT", "nu återupptas jag")
 
     }
 

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AndroidEmployeeExempel"
         tools:targetApi="31">
         <activity
+            android:name=".EmployeeDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

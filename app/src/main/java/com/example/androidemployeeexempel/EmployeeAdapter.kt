@@ -19,7 +19,7 @@ class EmployeeAdapter(context: Context, employees: List<Employee> ) : ArrayAdapt
         val salaryView: TextView = view.findViewById(R.id.tv_salary)
 
         nameView.text = employee?.name
-        salaryView.text = employee?.salary.toString()
+        salaryView.text = employee?.id.toString()
 
         return view
     }
