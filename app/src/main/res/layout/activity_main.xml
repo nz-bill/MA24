@@ -31,13 +31,21 @@
 
     </LinearLayout>
 
+    <com.google.android.material.tabs.TabLayout
+        android:background="#A8FF44"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tl_tabs"
+        app:layout_constraintTop_toBottomOf="@id/layout_buttons"
+        />
+
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:id="@+id/vp_container"
 
-        app:layout_constraintTop_toBottomOf="@id/layout_buttons"
+        app:layout_constraintTop_toBottomOf="@id/tl_tabs"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

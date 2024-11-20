@@ -1,12 +1,16 @@
 package com.example.fragmentexempel1
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.fragmentexempel1.databinding.ActivityMainBinding
+import com.example.fragmentexempel1.databinding.TabFragsBinding
+import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,6 +64,43 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
+
+        TabLayoutMediator(binding.tlTabs, binding.vpContainer){ tab, pos ->
+
+
+
+            val customTab = layoutInflater.inflate(R.layout.tab_frags, null)
+            val icon = customTab.findViewById<ImageView>(R.id.img_icon)
+            val tabText = customTab.findViewById<TextView>(R.id.tv_text)
+
+            //med viewBinding
+//               val bind = TabFragsBinding.inflate(layoutInflater)
+//            val customTab = binding.root
+
+                when (pos){
+                    0 -> {
+
+                        //med viewBinding
+//                        bind.imgIcon.setImageResource(android.R.drawable.ic_menu_week)
+//                        bind.tvText.text= "frag 1"
+
+                        icon.setImageResource(android.R.drawable.ic_menu_week)
+                        tabText.text= "frag 1"
+                    }
+                    1 -> {
+                        icon.setImageResource(android.R.drawable.btn_star)
+                        tabText.text= "frag 2"
+                    }
+                    2 -> {
+                        icon.setImageResource(android.R.drawable.btn_dialog)
+                        tabText.text= "frag 3"
+                    }
+
+                }
+            tab.customView = customTab
+        }.attach()
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
