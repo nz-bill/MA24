@@ -12,9 +12,12 @@ import com.example.fragmentexempel1.databinding.TabFragsBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 
-class MainActivity : AppCompatActivity() {
+// (kommenterer 1-5 finns i FirstActivity.kt)
+// 6. Vi implementerar vår interface i den/de aktiviteter som ska skapa instanser av FirstFragment()
+class MainActivity : AppCompatActivity(), FirstFragment.FirstFragmentListener {
 
     lateinit var binding: ActivityMainBinding
+
     val firstFragment= FirstFragment()
     val secondFragment = SecondFragment()
 
@@ -79,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 //               val bind = TabFragsBinding.inflate(layoutInflater)
 //            val customTab = binding.root
 
-                when (pos){
+            when (pos){
                     0 -> {
 
                         //med viewBinding
@@ -109,4 +112,24 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+
+
+    // 7. eftersom vi implementerar vårt FirstFragmentListener interface så måste vi definiera en metod addButtonPressed()
+    override fun addButtonPressed(name: String) {
+
+        // 8. Aktiviteten kan hitta sina fragment via supportFragmentmanager.
+        // fragment i en viewPager får som default taggarna "f0", "f1","f2"... osv
+        // vi använder oss av det och anropar någon metod i vårt SecondFragment
+        val frag2 = supportFragmentManager.findFragmentByTag("f1") as SecondFragment?
+        frag2?.setHelloText(name)
+
+    }
+
+
+//        skapar man fragment med fragmentmanager kan man sätta en tag till ett fragment med den tredje parametern i add/replace metoderna
+
+//        val frag1 = FirstFragment()
+//        supportFragmentManager.beginTransaction().apply {
+//            replace(binding.vpContainer,frag1,"taggen")
+//        }
 }

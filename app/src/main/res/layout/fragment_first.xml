@@ -6,10 +6,22 @@
     tools:context=".FirstFragment"
     android:background="#7F92FB">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <EditText
+       android:id="@+id/et_name"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="name"
+      android:layout_marginHorizontal="20dp"
+       android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:id="@+id/btn_add"/>
+
+
 
 </FrameLayout>
