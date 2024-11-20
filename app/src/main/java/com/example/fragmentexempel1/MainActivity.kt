@@ -46,14 +46,21 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
-        val pagerAdapter = PagerAdapter(this)
 
+        //skapar en instans av vår egen PagerAdapter som vi sen kopplar på vår viewPager
+        val pagerAdapter = PagerAdapter(this)
         binding.vpContainer.adapter = pagerAdapter
 
 
-
+        //vi kan antingen swipea i appen för att byta fragment, men vi kan även koppla de till knappar
         binding.btnFirst.setOnClickListener {
+
+            //currentItem representerar ett fragment vi vill visa i viewPagern med hjälp av dess index
             binding.vpContainer.currentItem--
+
+            // om vi inte vill ha den snygga 'svipe animationen' på kannaparna så kan vi använda
+            //  setCurrentItem med 'false' som andra parameter
+
            // binding.vpContainer.setCurrentItem(binding.vpContainer.currentItem -1, false)
         }
 
@@ -65,29 +72,32 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
+        //vi kan koppla ihop en tabLayout med en viewPager genom en TabLayoutMediator.
 
         TabLayoutMediator(binding.tlTabs, binding.vpContainer){ tab, pos ->
 
-
-
+            //om vi vill använda en egengjord layout till tabs så
+            // skapar referenser till layoutfilen och dess ui element
             val customTab = layoutInflater.inflate(R.layout.tab_frags, null)
             val icon = customTab.findViewById<ImageView>(R.id.img_icon)
             val tabText = customTab.findViewById<TextView>(R.id.tv_text)
 
             //med viewBinding
-//               val bind = TabFragsBinding.inflate(layoutInflater)
-//            val customTab = binding.root
+//              val bind = TabFragsBinding.inflate(layoutInflater)
+//              val customTab = binding.root
 
+
+                //vi sätter värden till varje tabs ui elemet
                 when (pos){
                     0 -> {
 
-                        //med viewBinding
+                        icon.setImageResource(android.R.drawable.ic_menu_week)
+                        tabText.text= "frag 1"
+
+                    //    med viewBinding
 //                        bind.imgIcon.setImageResource(android.R.drawable.ic_menu_week)
 //                        bind.tvText.text= "frag 1"
 
-                        icon.setImageResource(android.R.drawable.ic_menu_week)
-                        tabText.text= "frag 1"
                     }
                     1 -> {
                         icon.setImageResource(android.R.drawable.btn_star)
@@ -99,8 +109,10 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 }
+
+            // använder vi vår egengjorda layoutfil så måste vi uppdatera tab.customView med denna
             tab.customView = customTab
-        }.attach()
+        }.attach()          //attach() är det som färdigställer hela operationen
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
