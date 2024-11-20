@@ -17,14 +17,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FirstFragment : Fragment(R.layout.fragment_first) {
-    //dessa används ej i detta exempel
+
 
     //vi kan ange en layout.xml fil direkt i konstruktorn om vi inte vill göra något särskilt i OnCreateView()
 
 
 
 
-
+    //dessa används ej i detta exempel
 //    // TODO: Rename and change types of parameters
 //    private var param1: String? = null
 //    private var param2: String? = null

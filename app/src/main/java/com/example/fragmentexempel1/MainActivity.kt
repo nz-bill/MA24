@@ -34,12 +34,12 @@ class MainActivity : AppCompatActivity() {
 
 
         //metod 3: använd Apply metoden för att 'gruppera' operationerna
-//        supportFragmentManager.beginTransaction().apply {
-//
-//            add(R.id.fc_container, firstFragment )
-//            commit()
-//
-//        }
+        supportFragmentManager.beginTransaction().apply {
+
+            add(R.id.fc_container, firstFragment )
+            commit()
+
+        }
 
         binding.btnFirst.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
