@@ -34,44 +34,30 @@ class MainActivity : AppCompatActivity() {
 
 
         //metod 3: använd Apply metoden för att 'gruppera' operationerna
-        supportFragmentManager.beginTransaction().apply {
+//        supportFragmentManager.beginTransaction().apply {
+//
+//            add(R.id.fc_container, firstFragment )
+//            commit()
+//
+//        }
 
-            add(R.id.fc_container, firstFragment )
-            commit()
 
-        }
+        val pagerAdapter = PagerAdapter(this)
+
+        binding.vpContainer.adapter = pagerAdapter
+
+
 
         binding.btnFirst.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
-
-                replace(R.id.fc_container, firstFragment )
-
-                //addToBackStack gör så att vi kan använda 'back' knappen i android för att gå tillbaka till föregående vy
-                addToBackStack("frag1")
-                commit()
-
-            }
+            binding.vpContainer.currentItem--
+           // binding.vpContainer.setCurrentItem(binding.vpContainer.currentItem -1, false)
         }
 
 
         binding.btnSecond.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
+            binding.vpContainer.currentItem++
+           // binding.vpContainer.setCurrentItem(binding.vpContainer.currentItem + 1, false)
 
-                // skapa en bundle som innehåller key-value par som vi vill skicka med fragmentet
-                val myBundle = Bundle()
-                myBundle.apply {
-                    putString("bodyText", "Jag är text från en bundle")
-
-                }
-
-                //uppdatera secondFragment med nya argument (bundle)
-                secondFragment.arguments = myBundle
-
-                //byter ut fragment i vår fragmentManager
-                replace(R.id.fc_container, secondFragment)
-                addToBackStack("frag2")
-                commit()
-            }
         }
 
 
