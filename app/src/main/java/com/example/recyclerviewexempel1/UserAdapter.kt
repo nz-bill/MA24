@@ -1,5 +1,6 @@
 package com.example.recyclerviewexempel1
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,8 +27,18 @@ class UserAdapter(val users: MutableList<String>) : RecyclerView.Adapter<UserAda
     }
 
     // Binder data till varje ViewHolder. Varje element position i listan har samma position i recyclerview
+
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
        holder.nameTextView.text = users[position]
+
+        holder.itemView.setOnLongClickListener {
+            users.removeAt(position)
+
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position,users.size)
+
+            true
+        }
     }
 
 

@@ -33,6 +33,21 @@ class MainActivity : AppCompatActivity() {
         binding.rvList.layoutManager = LinearLayoutManager(this)
         binding.rvList.adapter = UserAdapter(users)
 
+        binding.btnAdd.setOnClickListener {
+            addUser()
+        }
+
+
+    }
+
+    fun addUser(){
+
+        if(binding.etName.text.isNotBlank()){
+            val name = binding.etName.text.toString()
+
+            users.add(name)
+            binding.rvList.adapter?.notifyItemInserted(users.lastIndex)
+        }
 
     }
 }
