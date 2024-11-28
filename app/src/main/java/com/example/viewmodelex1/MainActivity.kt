@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 // om vi inte anväbder oss av 'by viewModels' metoden så skapar vi en lateinit var
     lateinit var vm: MyviewModel
 
+    val topFragment = TopFragment()
+    val bottomFragment = BottomFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,25 +35,30 @@ class MainActivity : AppCompatActivity() {
        vm = ViewModelProvider(this).get(MyviewModel::class.java)
 
 
-        //vi 'observerar' LiveData variabeln counter som finns i vår viewmodel, så fort den ändras så körs koden innanför { }
-        vm.counter.observe(this, Observer { count ->
-            binding.textView.text = count.toString()            //textView uppdateras när counter ändras i vår viewModel
-        })
+        supportFragmentManager.beginTransaction().apply {
+            replace(binding.ffragmentContainerTop.id, topFragment)
+            replace(binding.ffragmentContainerBottom.id, bottomFragment)
+        }.commit()
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-
-        binding.btnAdd.setOnClickListener {
-
-            // när vi klickar på btnAdd så anropar vi en metod i vår viewModel
-           vm.incrementCounter()
-
-
-        }
+//        //vi 'observerar' LiveData variabeln counter som finns i vår viewmodel, så fort den ändras så körs koden innanför { }
+//        vm.counter.observe(this, Observer { count ->
+//            binding.textView.text = count.toString()            //textView uppdateras när counter ändras i vår viewModel
+//        })
+//
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
+//
+//
+//        binding.btnAdd.setOnClickListener {
+//
+//            // när vi klickar på btnAdd så anropar vi en metod i vår viewModel
+//           vm.incrementCounter()
+//
+//
+//        }
 
 
     }
