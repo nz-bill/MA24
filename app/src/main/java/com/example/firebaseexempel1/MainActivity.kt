@@ -8,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebaseexempel1.databinding.ActivityMainBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +48,11 @@ class MainActivity : AppCompatActivity() {
         personAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, persons)
 
         binding.lvPersons.adapter = personAdapter
+
+
+//        Firebase.auth.signOut()
+
+     //   binding.tvEmail.text = Firebase.auth.currentUser?.email
 
         binding.btnAdd.setOnClickListener {
             addPerson()

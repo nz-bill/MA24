@@ -3,7 +3,8 @@ package com.example.firebaseexempel1
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-class PersonViewModel: ViewModel() {
+class PersonViewModel(firebaseManager: FirebaseManager): ViewModel() {
+
 
     val firebaseManager = FirebaseManager()
 
