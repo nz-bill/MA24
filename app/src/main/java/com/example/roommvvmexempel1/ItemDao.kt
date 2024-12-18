@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Index
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import java.util.Locale.Category
 
 @Dao
@@ -17,7 +18,7 @@ interface ItemDao {
     fun delete(item: Item)
 
     @Query("SELECT * FROM item_table")
-    fun getAll() : List<Item>
+    fun getAll() : Flow<List<Item>>
 
     @Query("SELECT * FROM item_table WHERE category LIKE :categoryName")
     fun findByCategory(categoryName: String) : List<Item>
