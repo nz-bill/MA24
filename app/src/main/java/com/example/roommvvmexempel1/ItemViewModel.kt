@@ -11,14 +11,27 @@ class ItemViewModel: ViewModel() {
 
     private val repo = ItemRepository()
 
+
+    //read
     val items: LiveData<List<Item>> get() = repo.items.asLiveData()
 
+
+    //create
     fun saveItem(item: Item) =
         viewModelScope.launch(Dispatchers.IO) {
             repo.addItem(item)
 
         }
 
+
+    //update
+    fun updateItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
+        repo.updateItem(item)
+    }
+
+
+
+    //delete
     fun deleteItem(item: Item) =
         viewModelScope.launch(Dispatchers.IO) {
             repo.delteItem(item)

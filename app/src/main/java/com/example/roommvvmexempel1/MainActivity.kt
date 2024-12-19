@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         vm = ViewModelProvider(this).get(ItemViewModel::class.java)
@@ -55,7 +57,13 @@ class MainActivity : AppCompatActivity(){
 
         }
 
-        itemAdapter = ItemAdapter(this, itemList)
+        itemAdapter = ItemAdapter(this, itemList){ item ->
+            if(item != null){
+                vm.updateItem(item)
+            }
+
+        }
+
         binding.lvItems.adapter = itemAdapter
 
         //loadAndDisplayAllItems()

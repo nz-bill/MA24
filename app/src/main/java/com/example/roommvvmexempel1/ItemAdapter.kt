@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.TextView
 
-class ItemAdapter(context: Context, itemList: List<Item>): ArrayAdapter<Item>(context, R.layout.layout_item, itemList) {
+class ItemAdapter(context: Context, itemList: List<Item>, val updateItem: (Item?) -> Unit ): ArrayAdapter<Item>(context, R.layout.layout_item, itemList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
@@ -24,8 +24,11 @@ class ItemAdapter(context: Context, itemList: List<Item>): ArrayAdapter<Item>(co
         category.text = item?.category
         checkbox.isChecked = item?.done == true
 
+
         checkbox.setOnClickListener {
             item?.done = checkbox.isChecked
+
+            updateItem(item)
         }
 
 

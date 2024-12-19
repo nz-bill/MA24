@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Index
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import java.util.Locale.Category
 
@@ -13,6 +14,9 @@ interface ItemDao {
 
     @Insert
     fun insert(item: Item)
+
+    @Update
+    suspend fun update(item: Item)
 
     @Delete
     fun delete(item: Item)

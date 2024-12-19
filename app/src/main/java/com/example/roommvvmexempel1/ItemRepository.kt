@@ -8,6 +8,10 @@ class ItemRepository {
 
     val items: Flow<List<Item>> = itemDao.getAll()
 
+    suspend fun updateItem(item: Item){
+        itemDao.update(item)
+    }
+
     fun delteItem(item:Item){
         itemDao.delete(item)
     }
